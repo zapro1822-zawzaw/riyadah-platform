@@ -1,194 +1,170 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#172554"><title>رَوّاد V9</title><style>
-:root{--n:#172554;--b:#2563eb;--bg:#f5f7fb;--c:#fff;--t:#172033;--m:#64748b;--l:#e2e8f0;--ok:#059669;--bad:#dc2626;--r:16px}*{box-sizing:border-box}body{margin:0;font-family:system-ui,Tahoma,Arial;background:var(--bg);color:var(--t)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex}.side{position:fixed;right:0;top:0;bottom:0;width:250px;background:linear-gradient(#111c3d,#172554);color:#fff;padding:16px;z-index:10;overflow:auto}.brand{display:flex;gap:10px;align-items:center;padding:8px;border-bottom:1px solid #ffffff22}.logo{background:white;color:var(--n);border-radius:12px;width:42px;height:42px;display:grid;place-items:center;font-weight:900}.nav button{display:block;width:100%;text-align:right;background:transparent;color:#dbeafe;border:0;padding:11px;border-radius:10px;margin:3px 0}.nav button.active,.nav button:hover{background:#ffffff18;color:#fff}.main{margin-right:250px;width:calc(100% - 250px);min-height:100vh}.top{height:68px;background:#fff;border-bottom:1px solid var(--l);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:5}.container{padding:22px;max-width:1500px;margin:auto}.view{display:none}.view.active{display:block}.hero{background:linear-gradient(135deg,#172554,#2563eb);color:white;border-radius:20px;padding:24px;margin-bottom:16px}.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{background:var(--c);border:1px solid var(--l);border-radius:var(--r);padding:16px;box-shadow:0 8px 25px #0f172a0b}.stat{display:flex;justify-content:space-between;align-items:center}.num{font-size:28px;font-weight:900}.muted{color:var(--m)}.icon{width:46px;height:46px;border-radius:13px;background:#eff6ff;display:grid;place-items:center}.bar{height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--b)}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.btn{border:0;border-radius:10px;padding:9px 13px;background:#eef2ff;color:#3730a3;font-weight:700}.primary{background:var(--b);color:#fff}.danger{background:#fef2f2;color:#b91c1c}.light{background:#f8fafc;border:1px solid var(--l);color:var(--t)}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:5px;margin:9px 0}.field input,.field select,.field textarea{padding:10px;border:1px solid #cbd5e1;border-radius:10px}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:650px}.table th,.table td{padding:10px;border-bottom:1px solid var(--l);text-align:right}.table th{background:#f8fafc}.badge{display:inline-block;border-radius:99px;padding:4px 8px;font-size:12px;font-weight:800}.ok{background:#dcfce7;color:#166534}.bad{background:#fee2e2;color:#991b1b}.warn{background:#fef3c7;color:#92400e}.empty{padding:30px;text-align:center;color:var(--m);border:1px dashed #cbd5e1;border-radius:12px}.modal{display:none;position:fixed;inset:0;background:#0f172a88;z-index:30;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.box{background:#fff;border-radius:18px;padding:18px;width:min(700px,100%);max-height:90vh;overflow:auto}.mind{height:500px;position:relative;overflow:hidden;border:1px solid var(--l);border-radius:16px;background:radial-gradient(circle,#eff6ff,#fff 60%)}.node{position:absolute;padding:10px 13px;border:2px solid #93c5fd;background:#fff;border-radius:13px;min-width:130px;text-align:center;font-weight:800;z-index:2}.root{background:var(--n);color:#fff;border-color:var(--n)}.branch{background:#fff;border-color:#60a5fa}.sub{background:#f8fafc;border-color:#cbd5e1;font-weight:700}.line{position:absolute;height:2px;background:#93c5fd;transform-origin:0 0}.drop{padding:28px;border:2px dashed #93c5fd;background:#eff6ff;text-align:center;border-radius:14px}.notice{padding:12px 14px;border-radius:12px;background:#eff6ff;color:#1e40af}.mobile{display:none}.toast{display:none;position:fixed;left:18px;bottom:18px;background:#0f172a;color:#fff;padding:11px 15px;border-radius:11px;z-index:50}@media(max-width:900px){.side{transform:translateX(100%)}.side.open{transform:none}.main{margin-right:0;width:100%}.mobile{display:block}.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}@media(max-width:550px){.g4{grid-template-columns:1fr}.container{padding:13px}.top{padding:0 13px}}
-</style></head><body><div class="app"><aside class="side" id="side"><div class="brand"><div class="logo">ر</div><div><b>رَوّاد V9</b><br><small>مؤسسات الريادة</small></div></div><div class="nav" id="nav">
-<button class="active" data-v="dashboard">🏠 لوحة القيادة</button><button data-v="classes">🏫 الأقسام</button><button data-v="levels">🎓 المستويات</button><button data-v="students">👨‍🎓 المتعلمون</button><button data-v="support">🎯 الدعم المكثف</button><button data-v="assess">📝 الروائز القبلي/البعدي</button><button data-v="tracking">📊 شبكات التتبع</button><button data-v="math">🧩 تصديق لبنات الرياضيات</button><button data-v="fluency">⚡ شبكات الطلاقة</button><button data-v="mindmap">🧠 مولد الخريطة من PPTX</button><button data-v="reports">📈 التقارير والتصدير</button><button data-v="inspector">👩‍🏫 المفتشة المؤطرة</button><button data-v="links">🔗 التكاملات</button><button data-v="settings">⚙️ الإعدادات</button></div></aside><main class="main"><header class="top"><div><button class="btn light mobile" onclick="side.classList.toggle('open')">☰</button> <b id="pt">لوحة القيادة</b></div><span class="badge ok">محلي — حفظ تلقائي</span></header><div class="container">
-<section id="dashboard" class="view active"><div class="hero"><h2>منصة الأستاذ لمؤسسات الريادة</h2><p>نسخة عمل فارغة للمستوى الخامس: التشخيص، الدعم، التتبع، التقارير والموارد التفاعلية.</p></div><div class="grid g4" id="stats"></div><div class="grid g2" style="margin-top:15px"><div class="card"><div class="title"><h3>مؤشرات العمل</h3></div><div id="inds"></div></div><div class="card"><h3>اختصارات</h3><div class="grid g2"><button class="btn primary" onclick="openStudent()">+ متعلم</button><button class="btn" onclick="show('assess')">إدخال رائز</button><button class="btn" onclick="show('support')">مجموعات الدعم</button><button class="btn" onclick="show('mindmap')">رفع PPTX</button></div></div></div></section>
-<section id="classes" class="view"><div class="title"><h2>الأقسام</h2><button class="btn primary" onclick="openClass()">+ قسم</button></div><div class="card" id="classesBox"></div></section>
-<section id="levels" class="view"><div class="title"><h2>المستويات الدراسية</h2><button class="btn primary" onclick="openLevel()">+ مستوى</button></div><div class="card"><div class="notice">أضف أي مستوى أو مسار دراسي. هذه القائمة مستقلة عن النماذج الافتراضية.</div><div id="levelsBox" style="margin-top:14px"></div></div></section>
-<section id="students" class="view"><div class="title"><h2>المتعلمون</h2><button class="btn primary" onclick="openStudent()">+ متعلم</button></div><div class="card"><input id="search" placeholder="بحث بالاسم..." style="padding:10px;border:1px solid var(--l);border-radius:10px;margin-bottom:12px;width:100%"><div id="studentsBox"></div></div></section>
-<section id="support" class="view"><div class="title"><h2>الدعم المكثف</h2><button class="btn primary" onclick="groups()">تكوين مجموعات تلقائياً</button></div><div class="grid g3"><div class="card"><b>المتعثرون</b><div class="num" id="sc">0</div></div><div class="card"><b>مجموعات الدعم</b><div class="num" id="gc">0</div></div><div class="card"><b>قاعدة التكوين</b><p class="muted">آخر رائز أقل من 50%.</p></div></div><div class="card" style="margin-top:15px" id="groupsBox"></div></section>
-<section id="assess" class="view"><div class="title"><h2>الروائز — المستوى الخامس</h2></div><div class="card"><div class="toolbar"><select id="atype"><option value="pre">الرائز القبلي</option><option value="post">الرائز البعدي</option></select><select id="asub"><option>اللغة العربية</option><option>الرياضيات</option><option>الفرنسية</option></select><button class="btn primary" onclick="saveAssess()">حفظ درجات التحكم</button></div><p class="muted">أدخل اسم المتعلم مسبقاً، ثم درجة التحكم فقط. يمكن تطوير المعايير وفق النموذج الوزاري الذي تعتمده.</p><div id="assessBox"></div></div></section>
-<section id="tracking" class="view"><div class="title"><h2>شبكات التتبع</h2><button class="btn primary" onclick="trackAdd()">+ تسجيل</button></div><div class="card" id="trackBox"></div></section>
-<section id="math" class="view"><div class="title"><h2>شبكات التصديق على اللبنات الخاصة بالرياضيات</h2><button class="btn primary" onclick="mathAdd()">+ بطاقة</button></div><div class="card" id="mathBox"></div></section>
-<section id="fluency" class="view"><div class="title"><h2>شبكات الطلاقة</h2><button class="btn primary" onclick="fluAdd()">+ تسجيل</button></div><div class="card" id="fluBox"></div></section>
-<section id="mindmap" class="view"><div class="title"><h2>مولد الخريطة الذهنية التفاعلية</h2><div class="toolbar"><button class="btn" onclick="exportMap()">تصدير حسب لغة الملف</button><button class="btn" onclick="clearMap()">مسح</button></div></div><div class="card"><div class="drop"><b>🧠 ارفع درس PPTX</b><p class="muted">يتم استخراج العناوين الرئيسية والفرعية كما تظهر في الملف، مع الاستفادة من مستوى الفقرات وحجم الخط والعناوين المميزة. لا تتم ترجمة محتوى الدرس.</p><input type="file" id="ppt" accept=".pptx"><div id="pstatus"></div></div><div id="mapMeta" class="muted small" style="margin-top:10px"></div><div class="mind" id="mind" style="margin-top:14px"><div class="empty" style="margin:180px 20px">لم يتم تحميل درس.</div></div></div></section>
-<section id="reports" class="view"><div class="title"><h2>التقارير والتصدير</h2><div class="toolbar"><button class="btn" onclick="jsonOut()">JSON</button><button class="btn" onclick="csvOut()">CSV</button><button class="btn primary" onclick="print()">طباعة</button></div></div><div class="grid g3"><div class="card"><b>المتعلمون</b><div class="num" id="rs">0</div></div><div class="card"><b>قبلي</b><div class="num" id="rp">0</div></div><div class="card"><b>بعدي</b><div class="num" id="ro">0</div></div></div><div class="card" style="margin-top:15px" id="reportBox"></div></section>
-<section id="inspector" class="view"><div class="title"><h2>المفتشة المؤطرة</h2></div><div class="grid g2"><div class="card"><div class="field"><label>ملاحظات وتأطير</label><textarea id="notes" rows="9"></textarea></div><button class="btn primary" onclick="saveNotes()">حفظ</button></div><div class="card"><h3>جاهزية الملف</h3><div id="ready"></div></div></div></section>
-<section id="links" class="view"><div class="title"><h2>الروابط والتكاملات</h2></div><div class="grid g2"><div class="card"><div class="field"><label>Google Classroom</label><input id="classroom"></div><div class="field"><label>Canva</label><input id="canva"></div><div class="field"><label>مسار</label><input id="massar"></div><button class="btn primary" onclick="saveLinks()">حفظ</button></div><div class="card"><h3>ملاحظة</h3><p class="muted">الروابط تفتح خدمات خارجية؛ المنصة لا تدّعي أنها منصة رسمية للوزارة.</p></div></div></section>
-<section id="settings" class="view"><div class="title"><h2>الإعدادات والنسخ الاحتياطي</h2></div><div class="grid g2"><div class="card"><div class="field"><label>المؤسسة</label><input id="school"></div><div class="field"><label>الأستاذ</label><input id="teacher"></div><div class="field"><label>الموسم</label><input id="year" value="2026/2027"></div><button class="btn primary" onclick="saveSettings()">حفظ</button></div><div class="card"><h3>البيانات</h3><p class="muted">كل البيانات التشغيلية محفوظة محلياً على الجهاز.</p><button class="btn" onclick="jsonOut()">⬇️ تصدير نسخة</button> <button class="btn" onclick="document.getElementById('restore').click()">⬆️ استرجاع</button><input hidden type="file" id="restore" accept=".json"><hr><button class="btn danger" onclick="resetData()">مسح البيانات</button></div></div></section>
-</div></main></div><div class="modal" id="modal"><div class="box" id="box"></div></div><div class="toast" id="toast"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><script>
-const KEY='riyadah_v9';let D=load(),map=null;function base(){return{school:{name:'',teacher:'',year:'2026/2027'},levels:['المستوى الأول ابتدائي','المستوى الثاني ابتدائي','المستوى الثالث ابتدائي','المستوى الرابع ابتدائي','المستوى الخامس ابتدائي','المستوى السادس ابتدائي'],classes:[],students:[],assess:[],tracking:[],math:[],fluency:[],groups:[],notes:'',links:{classroom:'',canva:'',massar:''}}}function load(){try{let raw=JSON.parse(localStorage.getItem(KEY)||'{}'),b=base(),d=Object.assign(b,raw);d.levels=Array.isArray(raw.levels)&&raw.levels.length?raw.levels:b.levels;return d}catch(e){return base()}}function save(){localStorage.setItem(KEY,JSON.stringify(D));render()}function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}function nm(i){return D.students.find(s=>s.id===i)?.name||'—'}function esc(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}function toast(x){let t=document.getElementById('toast');t.textContent=x;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.getElementById('pt').textContent=document.querySelector('#nav button[data-v="'+v+'"]').textContent.trim();side.classList.remove('open');render()}document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>show(b.dataset.v));function support(i){let a=D.assess.filter(x=>x.studentId===i);let r=a.filter(x=>x.type==='post').at(-1)||a.filter(x=>x.type==='pre').at(-1);return r&&+r.score<50}
-function render(){let sup=D.students.filter(s=>support(s.id)).length;stats.innerHTML=[['👨‍🎓','المتعلمون',D.students.length],['🏫','الأقسام',D.classes.length],['📝','الروائز',D.assess.length],['🎯','يحتاجون دعماً',sup]].map(x=>`<div class="card stat"><div><span class="muted">${x[1]}</span><div class="num">${x[2]}</div></div><div class="icon">${x[0]}</div></div>`).join('');inds.innerHTML=`<p>قبلي: <b>${D.assess.filter(x=>x.type==='pre').length}</b></p><p>بعدي: <b>${D.assess.filter(x=>x.type==='post').length}</b></p><p>تتبع: <b>${D.tracking.length}</b> — رياضيات: <b>${D.math.length}</b> — طلاقة: <b>${D.fluency.length}</b></p>`;renderClasses();renderLevels();renderStudents();renderGroups();renderAssess();renderTracking();renderMath();renderFlu();renderReports();notes.value=D.notes;classroom.value=D.links.classroom;canva.value=D.links.canva;massar.value=D.links.massar;school.value=D.school.name;teacher.value=D.school.teacher;year.value=D.school.year;ready.innerHTML=[['الأقسام',D.classes.length],['المتعلمون',D.students.length],['الرائز القبلي',D.assess.some(x=>x.type==='pre')],['شبكات التتبع',D.tracking.length],['مجموعات الدعم',D.groups.length]].map(x=>`<p>${x[1]?'✅':'⬜'} ${x[0]}</p>`).join('')}
-function renderClasses(){classesBox.innerHTML=D.classes.length?`<div class="tablewrap"><table class="table"><tr><th>القسم</th><th>المستوى</th><th>المتعلمون</th><th></th></tr>${D.classes.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.level)}</td><td>${D.students.filter(s=>s.classId===c.id).length}</td><td><button class="btn danger" onclick="delClass('${c.id}')">حذف</button></td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد أقسام بعد.</div>'}function renderStudents(){let q=(search?.value||'').trim();let a=D.students.filter(s=>!q||s.name.includes(q));studentsBox.innerHTML=a.length?`<div class="tablewrap"><table class="table"><tr><th>الاسم</th><th>القسم</th><th>الوضعية</th><th></th></tr>${a.map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${esc(D.classes.find(c=>c.id===s.classId)?.name||'—')}</td><td>${support(s.id)?'<span class="badge bad">يحتاج دعماً</span>':'<span class="badge ok">مستقر</span>'}</td><td><button class="btn" onclick="profile('${s.id}')">الملف</button> <button class="btn danger" onclick="delStudent('${s.id}')">حذف</button></td></tr>`).join('')}</table></div>`:'<div class="empty">لا يوجد متعلمون.</div>'}search.oninput=renderStudents
-function renderGroups(){sc.textContent=D.students.filter(s=>support(s.id)).length;gc.textContent=D.groups.length;groupsBox.innerHTML=D.groups.length?D.groups.map((g,i)=>`<div class="card"><b>المجموعة ${i+1}</b><p>${g.ids.map(nm).map(esc).join('، ')}</p></div>`).join(''):'<div class="empty">لم يتم تكوين مجموعات.</div>'}function renderAssess(){let t=atype.value,s=asub.value;assessBox.innerHTML=D.students.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>درجة التحكم %</th><th>الحالة</th></tr>${D.students.map(x=>{let r=D.assess.filter(a=>a.studentId===x.id&&a.type===t&&a.subject===s).at(-1);return `<tr><td>${esc(x.name)}</td><td><input id="v_${x.id}" type="number" min="0" max="100" value="${r?.score??''}" style="width:110px"></td><td>${r?(r.score>=50?'<span class="badge ok">متحكم</span>':'<span class="badge bad">دون العتبة</span>'):'—'}</td></tr>`}).join('')}</table></div>`:'<div class="empty">أضف المتعلمين أولاً.</div>'}atype.onchange=renderAssess;asub.onchange=renderAssess
-function renderTracking(){trackBox.innerHTML=D.tracking.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>المجال</th><th>التحكم</th><th>التاريخ</th></tr>${D.tracking.map(x=>`<tr><td>${esc(nm(x.studentId))}</td><td>${esc(x.domain)}</td><td>${esc(x.level)}</td><td>${x.date}</td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد تسجيلات.</div>'}function renderMath(){mathBox.innerHTML=D.math.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>اللبنة</th><th>التحكم</th></tr>${D.math.map(x=>`<tr><td>${esc(nm(x.studentId))}</td><td>${esc(x.block)}</td><td>${esc(x.level)}</td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد بطاقات.</div>'}function renderFlu(){fluBox.innerHTML=D.fluency.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>المجال</th><th>المؤشر</th><th>القيمة</th></tr>${D.fluency.map(x=>`<tr><td>${esc(nm(x.studentId))}</td><td>${esc(x.domain)}</td><td>${esc(x.indicator)}</td><td>${esc(x.value)}</td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد تسجيلات.</div>'}function renderReports(){rs.textContent=D.students.length;rp.textContent=D.assess.filter(x=>x.type==='pre').length;ro.textContent=D.assess.filter(x=>x.type==='post').length;let subs=['اللغة العربية','الرياضيات','الفرنسية'];reportBox.innerHTML=subs.map(s=>{let a=D.assess.filter(x=>x.subject===s&&x.type==='pre'),b=D.assess.filter(x=>x.subject===s&&x.type==='post');let av=x=>x.length?Math.round(x.reduce((z,y)=>z+ +y.score,0)/x.length):0;return `<p><b>${s}</b> — قبلي ${av(a)}% — بعدي ${av(b)}%</p><div class="bar"><i style="width:${av(b)}%"></i></div>`}).join('')}
-function renderLevels(){let box=document.getElementById('levelsBox');if(!box)return;box.innerHTML=D.levels.map((x,i)=>`<div class="card" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>${esc(x)}</b><span>${D.classes.filter(c=>c.level===x).length} قسم <button class="btn danger" onclick="delLevel(${i})" ${D.classes.some(c=>c.level===x)?'disabled title="احذف/انقل الأقسام أولاً"':''}>حذف</button></span></div>`).join('')}
-function openLevel(){modal(`<h2>إضافة مستوى</h2><div class="field"><label>اسم المستوى</label><input id="ln" placeholder="اكتب أي مستوى أو مسار"></div><button class="btn primary" onclick="addLevel()">إضافة</button>`)}
-function addLevel(){let n=ln.value.trim();if(!n)return toast('اكتب اسم المستوى');if(D.levels.includes(n))return toast('المستوى موجود');D.levels.push(n);save();close();toast('تمت إضافة المستوى')}
-function delLevel(i){let n=D.levels[i];if(D.classes.some(c=>c.level===n))return toast('انقل الأقسام أولاً');D.levels.splice(i,1);save();toast('تم حذف المستوى')}
-function openClass(){modal(`<h2>إضافة قسم</h2><div class="field"><label>اسم القسم</label><input id="mn" placeholder="مثال: 5A"></div><div class="field"><label>المستوى</label><select id="ml">${D.levels.map(x=>`<option>${esc(x)}</option>`).join('')}</select></div><div class="field"><label>أو اكتب مستوى جديد</label><input id="mlCustom" placeholder="مثال: جذع مشترك / CE1 / المستوى المهني"></div><button class="btn primary" onclick="addClass()">حفظ</button>`)}
-function addClass(){let n=mn.value.trim(),custom=mlCustom.value.trim(),lev=custom||ml.value;if(!n||!lev)return toast('أكمل البيانات');if(custom&&!D.levels.includes(custom))D.levels.push(custom);D.classes.push({id:id(),name:n,level:lev});save();close();toast('تمت إضافة القسم')}function openStudent(){if(!D.classes.length)return toast('أضف قسماً أولاً');modal(`<h2>إضافة متعلم</h2><div class="field"><label>اسم المتعلم</label><input id="sn"></div><div class="field"><label>القسم</label><select id="sl">${D.classes.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div><button class="btn primary" onclick="addStudent()">حفظ</button>`)}function addStudent(){let n=sn.value.trim();if(!n)return toast('اكتب الاسم');D.students.push({id:id(),name:n,classId:sl.value});save();close();toast('تمت الإضافة')}function profile(i){let s=D.students.find(x=>x.id===i),a=D.assess.filter(x=>x.studentId===i);modal(`<h2>ملف ${esc(s.name)}</h2><p>القسم: ${esc(D.classes.find(c=>c.id===s.classId)?.name||'—')}</p><p>الوضعية: ${support(i)?'يحتاج دعماً':'مستقر'}</p>${a.length?a.map(x=>`<p>${x.type==='pre'?'قبلي':'بعدي'} — ${esc(x.subject)}: ${x.score}%</p>`).join(''):'<p class="muted">لا توجد نتائج.</p>'}`)}
-function trackAdd(){if(!D.students.length)return toast('أضف المتعلمين');modal(`<h2>تسجيل تتبع</h2><div class="field"><label>المتعلم</label><select id="ts">${D.students.map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></div><div class="field"><label>المجال</label><input id="td"></div><div class="field"><label>التحكم</label><select id="tl"><option>مكتسب</option><option>في طور الاكتساب</option><option>غير مكتسب</option></select></div><button class="btn primary" onclick="addTrack()">حفظ</button>`)}function addTrack(){D.tracking.push({studentId:ts.value,domain:td.value,level:tl.value,date:new Date().toLocaleDateString('ar-MA')});save();close()}function mathAdd(){if(!D.students.length)return toast('أضف المتعلمين');modal(`<h2>تصديق لبنة رياضيات</h2><div class="field"><label>المتعلم</label><select id="ms">${D.students.map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></div><div class="field"><label>اللبنة</label><input id="mb"></div><div class="field"><label>التحكم</label><select id="mv"><option>مكتسب</option><option>في طور الاكتساب</option><option>غير مكتسب</option></select></div><button class="btn primary" onclick="addMath()">حفظ</button>`)}function addMath(){D.math.push({studentId:ms.value,block:mb.value,level:mv.value});save();close()}function fluAdd(){if(!D.students.length)return toast('أضف المتعلمين');modal(`<h2>شبكة طلاقة</h2><div class="field"><label>المتعلم</label><select id="fs">${D.students.map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></div><div class="field"><label>المجال</label><input id="fd"></div><div class="field"><label>المؤشر</label><input id="fi"></div><div class="field"><label>القيمة</label><input id="fv"></div><button class="btn primary" onclick="addFlu()">حفظ</button>`)}function addFlu(){D.fluency.push({studentId:fs.value,domain:fd.value,indicator:fi.value,value:fv.value});save();close()}
-function saveAssess(){D.students.forEach(s=>{let v=document.getElementById('v_'+s.id)?.value;if(v!==''){D.assess=D.assess.filter(x=>!(x.studentId===s.id&&x.type===atype.value&&x.subject===asub.value));D.assess.push({studentId:s.id,type:atype.value,subject:asub.value,score:+v})}});save();toast('تم حفظ الرائز')}function groups(){let a=D.students.filter(s=>support(s.id)).map(s=>s.id);D.groups=[];for(let i=0;i<a.length;i+=5)D.groups.push({ids:a.slice(i,i+5)});save();toast('تم تكوين المجموعات')}function delClass(i){D.classes=D.classes.filter(x=>x.id!==i);D.students=D.students.filter(x=>x.classId!==i);save()}function delStudent(i){D.students=D.students.filter(x=>x.id!==i);D.assess=D.assess.filter(x=>x.studentId!==i);save()}function saveNotes(){D.notes=notes.value;save();toast('تم الحفظ')}function saveLinks(){D.links={classroom:classroom.value,canva:canva.value,massar:massar.value};save();toast('تم الحفظ')}function saveSettings(){D.school={name:school.value,teacher:teacher.value,year:year.value};save();toast('تم الحفظ')}
-function modal(x){box.innerHTML=x;modalEl.classList.add('show')}function close(){modalEl.classList.remove('show')}const modalEl=document.getElementById('modal');modalEl.onclick=e=>{if(e.target===modalEl)close()};function dl(n,s,t){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:t}));a.download=n;a.click()}function jsonOut(){dl('riyadah-v9-backup.json',JSON.stringify(D,null,2),'application/json')}function csvOut(){let r=[['الاسم','القسم','الحالة'],...D.students.map(s=>[s.name,D.classes.find(c=>c.id===s.classId)?.name||'',support(s.id)?'يحتاج دعماً':'مستقر'])];dl('riyadah-students.csv',r.map(x=>x.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\n'),'text/csv;charset=utf-8')}function resetData(){if(confirm('حذف كل البيانات المحلية؟')){localStorage.removeItem(KEY);D=base();render()}}
-function detectLang(text){
-  text=String(text||'');
-  let ar=(text.match(/[\u0600-\u06FF]/g)||[]).length;
-  let fr=(text.match(/[À-ÿŒœÇçÉéÈèÊêËëÎîÏïÔôÛûÙùÜüŸÿ]/g)||[]).length;
-  let latin=(text.match(/[A-Za-z]/g)||[]).length;
-  if(ar>Math.max(latin,fr))return {code:'ar',dir:'rtl',name:'العربية'};
-  if(fr>0 && fr>=latin*.015)return {code:'fr',dir:'ltr',name:'Français'};
-  return {code:'en',dir:'ltr',name:'English / Latin'};
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>رَوّاد V13.1 Ultimate</title>
+<style>
+:root{--nav:#101827;--blue:#2563eb;--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#6b7280;--line:#e5e7eb;--ok:#0f9d72}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial;color:var(--text)}
+.app{min-height:100vh;display:flex}.side{width:260px;background:var(--nav);color:white;padding:22px 14px;position:sticky;top:0;height:100vh}.brand{font-size:25px;font-weight:800;margin:4px 10px 2px}.sub{font-size:12px;color:#aeb8c8;margin:0 10px 20px}
+.nav button{width:100%;border:0;background:transparent;color:#dce4f0;padding:13px 12px;border-radius:12px;text-align:right;font-size:15px;cursor:pointer;margin:2px 0}.nav button.active,.nav button:hover{background:#24334d;color:#fff}.nav span{display:inline-block;width:27px}
+.main{flex:1;padding:22px;max-width:1400px;margin:auto;width:100%}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.title h1{margin:0;font-size:27px}.title p{margin:5px 0;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+button,.btn{font:inherit}.primary,.secondary,.danger{border:0;border-radius:10px;padding:10px 14px;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#eaf0ff;color:#1747b7}.danger{background:#fee2e2;color:#991b1b}
+.view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 3px 14px #10182708}.stat b{font-size:29px;display:block;margin-top:8px}.stat small{color:var(--muted)}.section{margin-top:16px}.section h2{font-size:19px;margin:0 0 12px}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+label{font-size:13px;color:var(--muted);display:block;margin:9px 0 5px}input,select,textarea{width:100%;padding:11px;border:1px solid #d8dee8;border-radius:10px;background:white;font:inherit}textarea{min-height:100px;resize:vertical}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px}.table{width:100%;border-collapse:collapse;min-width:720px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:right}.table th{background:#f8fafc}.pill{padding:4px 9px;border-radius:999px;background:#eef2ff;color:#3346a5;font-size:12px}.drop{border:2px dashed #cbd5e1;border-radius:15px;padding:28px;text-align:center;background:#fafcff}.drop.drag{background:#eef5ff;border-color:#2563eb}.drop input{display:none}.mind{min-height:440px;position:relative;overflow:auto;background:linear-gradient(#fff,#fbfdff);border:1px solid var(--line);border-radius:15px;padding:20px}.mindmap{min-width:760px;min-height:400px;position:relative;display:flex;align-items:center;justify-content:center}.rootnode{background:#63a92f;color:white;border-radius:50%;width:145px;height:145px;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;font-weight:800;z-index:2;box-shadow:0 8px 25px #0002}.branch{position:absolute;width:270px;background:#edf5ff;border:1px solid #bcd2f5;border-radius:16px;padding:13px;box-shadow:0 6px 18px #0000000c}.branch h3{margin:0 0 7px;font-size:15px}.branch ul{margin:0;padding-right:18px}.branch li{margin:3px 0;font-size:13px}.b1{right:15px;top:20px}.b2{left:15px;top:20px}.b3{right:15px;bottom:20px}.b4{left:15px;bottom:20px}.connector{position:absolute;height:2px;background:#9ca3af;width:160px}.c1{right:245px;top:150px;transform:rotate(-27deg)}.c2{left:245px;top:150px;transform:rotate(27deg)}.c3{right:245px;bottom:150px;transform:rotate(27deg)}.c4{left:245px;bottom:150px;transform:rotate(-27deg)}
+.notice{padding:12px 14px;border-radius:10px;background:#eff6ff;color:#1e40af;margin-top:10px;font-size:13px}.empty{color:var(--muted);text-align:center;padding:28px}.toast{position:fixed;bottom:20px;left:20px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:20}.filetag{display:inline-flex;align-items:center;gap:7px;background:#f1f5f9;padding:7px 10px;border-radius:9px;margin-top:10px}
+@media(max-width:900px){.side{width:76px;padding:15px 8px}.brand,.sub,.nav button .txt{display:none}.nav button{text-align:center}.main{padding:14px}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.branch{width:230px}.mindmap{min-width:650px}}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.top{align-items:flex-start}.title h1{font-size:21px}.side{width:64px}.main{padding:10px}.branch{width:205px;font-size:12px}.rootnode{width:115px;height:115px}.mindmap{min-width:610px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">رَوّاد</div><div class="sub">V13.1 Ultimate • School Riyada</div>
+  <div class="nav">
+    <button class="active" data-view="dashboard"><span>⌂</span><span class="txt">لوحة القيادة</span></button>
+    <button data-view="learners"><span>👥</span><span class="txt">المتعلمون</span></button>
+    <button data-view="assessment"><span>✓</span><span class="txt">الروائز</span></button>
+    <button data-view="tracking"><span>▦</span><span class="txt">شبكات التتبع</span></button>
+    <button data-view="mindmap"><span>✦</span><span class="txt">الخريطة الذهنية</span></button>
+    <button data-view="reports"><span>▥</span><span class="txt">التقارير والتصدير</span></button>
+    <button data-view="settings"><span>⚙</span><span class="txt">الإعدادات</span></button>
+  </div>
+</aside>
+<main class="main">
+<header class="top">
+ <div class="title"><h1 id="pageTitle">لوحة القيادة</h1><p>نظام تربوي لتنظيم الدعم والتتبع والتقويم — بياناتك تبقى على جهازك.</p></div>
+ <div class="actions"><button class="secondary" onclick="backup()">نسخة احتياطية</button><button class="primary" onclick="window.print()">طباعة</button></div>
+</header>
+
+<section id="dashboard" class="view active">
+ <div class="grid">
+  <div class="card stat"><small>المتعلمون</small><b id="sLearners">0</b><span class="pill">جميع المستويات</span></div>
+  <div class="card stat"><small>المستوى المحدد</small><b id="sLevel">—</b><span class="pill">قابل للتغيير</span></div>
+  <div class="card stat"><small>الروائز المسجلة</small><b id="sAssess">0</b><span class="pill">قبلي / بعدي</span></div>
+  <div class="card stat"><small>نسبة التحكم</small><b id="sMastery">0%</b><span class="pill">حسب البيانات</span></div>
+ </div>
+ <div class="two section">
+  <div class="card"><h2>الانطلاقة السريعة</h2>
+   <div class="row"><button class="primary" onclick="show('learners')">إضافة متعلم</button><button class="secondary" onclick="show('assessment')">تسجيل رائز</button><button class="secondary" onclick="show('mindmap')">إنشاء خريطة من PPTX</button></div>
+   <div class="notice">المنصة فارغة عند البداية. يمكنك إنشاء أي مستوى من الإعدادات دون فرض مستوى سابق أو أسماء متعلمين.</div>
+  </div>
+  <div class="card"><h2>المستوى الحالي</h2><select id="dashLevel" onchange="setLevel(this.value)"></select><p id="levelInfo" class="notice">اختر المستوى الذي تعمل عليه.</p></div>
+ </div>
+</section>
+
+<section id="learners" class="view">
+ <div class="card"><h2>إدارة المتعلمين</h2>
+  <div class="row"><div style="flex:1;min-width:170px"><label>الاسم الكامل</label><input id="lname" placeholder="اسم المتعلم"></div>
+  <div style="width:180px"><label>المستوى</label><select id="llevel"></select></div>
+  <div style="width:160px"><label>الفوج</label><input id="lgroup" placeholder="1"></div>
+  <div style="align-self:end"><button class="primary" onclick="addLearner()">إضافة</button></div></div>
+ </div>
+ <div class="card section"><div class="row"><h2 style="flex:1">لائحة المتعلمين</h2><button class="danger" onclick="clearLearners()">مسح الجميع</button></div>
+  <div id="learnerTable"></div></div>
+</section>
+
+<section id="assessment" class="view">
+ <div class="two">
+  <div class="card"><h2>الرائز القبلي / البعدي</h2>
+   <label>المتعلم</label><select id="alearner"></select>
+   <label>المستوى</label><select id="alevel"></select>
+   <label>المادة</label><select id="asubject"><option>اللغة العربية</option><option>اللغة الفرنسية</option><option>الرياضيات</option></select>
+   <label>نوع الرائز</label><select id="atype"><option>الرائز القبلي</option><option>الرائز البعدي</option></select>
+   <label>نسبة التحكم (%)</label><input id="amastery" type="number" min="0" max="100" placeholder="مثال: 75">
+   <label>ملاحظات</label><textarea id="anote" placeholder="ملاحظات الأستاذ..."></textarea>
+   <button class="primary" onclick="addAssessment()">حفظ الرائز</button>
+  </div>
+  <div class="card"><h2>سجل الروائز</h2><div id="assessmentTable"></div></div>
+ </div>
+</section>
+
+<section id="tracking" class="view">
+ <div class="card"><h2>شبكات التتبع والتصديق</h2>
+  <p class="notice">يمكنك اختيار المستوى والمجال ثم إدخال اسم المتعلم ومستوى التحكم. هذا القالب قابل للتوسيع ولا يفرض أرقاماً أو نتائج جاهزة.</p>
+  <div class="row"><div style="flex:1"><label>المستوى</label><select id="tlevel"></select></div><div style="flex:1"><label>المجال</label><select id="tdomain"><option>الرياضيات — اللبنات</option><option>اللغة العربية</option><option>اللغة الفرنسية</option><option>الطلاقة</option><option>الدعم المكثف</option></select></div></div>
+  <div class="row" style="margin-top:10px"><div style="flex:1"><label>اسم المتعلم</label><input id="tname"></div><div style="width:180px"><label>التحكم (%)</label><input id="tmastery" type="number" min="0" max="100"></div><button class="primary" style="align-self:end" onclick="addTracking()">إضافة</button></div>
+ </div>
+ <div class="card section"><div id="trackingTable"></div></div>
+</section>
+
+<section id="mindmap" class="view">
+ <div class="card">
+  <h2>مولّد الخريطة الذهنية التفاعلية من PPTX</h2>
+  <p>حمّل درساً بصيغة PowerPoint. يحاول المولد استخراج <b>العناوين الرئيسية والفرعية</b> من بنية الشرائح، ثم يبني خريطة مختصرة بدل نسخ الدرس كاملاً.</p>
+  <div id="drop" class="drop"><input id="pptx" type="file" accept=".pptx"><button class="primary" onclick="document.getElementById('pptx').click()">اختيار ملف PPTX</button><div id="filetag"></div></div>
+  <div class="row" style="margin-top:12px"><label style="margin:0">لغة التصدير</label><select id="exportLang" style="width:190px"><option value="auto">لغة الملف تلقائياً</option><option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option></select><button class="secondary" onclick="generateMap()">توليد الخريطة</button><button class="primary" onclick="exportMap()">تصدير الخريطة</button></div>
+  <div id="mapStatus" class="notice" style="display:none"></div>
+ </div>
+ <div class="card section mind"><div id="mindmapCanvas" class="mindmap"><div class="empty">لم يتم تحميل درس بعد.</div></div></div>
+</section>
+
+<section id="reports" class="view">
+ <div class="grid">
+  <div class="card"><h2>تقرير المتعلمين</h2><button class="primary" onclick="exportCSV('learners')">تصدير CSV</button></div>
+  <div class="card"><h2>تقرير الروائز</h2><button class="primary" onclick="exportCSV('assessments')">تصدير CSV</button></div>
+  <div class="card"><h2>تقرير التتبع</h2><button class="primary" onclick="exportCSV('tracking')">تصدير CSV</button></div>
+  <div class="card"><h2>النسخة الاحتياطية</h2><button class="secondary" onclick="backup()">JSON</button></div>
+ </div>
+ <div class="card section"><h2>ملخص الأداء</h2><div id="reportSummary"></div></div>
+</section>
+
+<section id="settings" class="view">
+ <div class="two">
+  <div class="card"><h2>المستويات</h2><p>أضف أي مستوى تريد استعماله.</p><div class="row"><input id="newLevel" placeholder="مثال: المستوى الخامس ابتدائي"><button class="primary" onclick="addLevel()">إضافة مستوى</button></div><div id="levelsList" style="margin-top:12px"></div></div>
+  <div class="card"><h2>البيانات</h2><button class="secondary" onclick="backup()">تصدير نسخة احتياطية</button><br><br><label>استرجاع نسخة JSON</label><input type="file" id="restore" accept=".json" onchange="restoreFile(event)"><div class="notice">لا توجد قاعدة بيانات خارجية في هذه النسخة؛ البيانات محفوظة في LocalStorage على الجهاز.</div></div>
+ </div>
+</section>
+</main></div>
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+const KEY='riyadah_v13_1';
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{levels:[],learners:[],assessments:[],tracking:[],map:{title:'',branches:[],lang:'ar'},pptText:[]};
+let currentLevel=db.levels[0]||'';
+let pptSlides=[];
+
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function toast(s){const t=document.getElementById('toast');t.textContent=s;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function show(id){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));const names={dashboard:'لوحة القيادة',learners:'المتعلمون',assessment:'الروائز',tracking:'شبكات التتبع',mindmap:'الخريطة الذهنية',reports:'التقارير والتصدير',settings:'الإعدادات'};document.getElementById('pageTitle').textContent=names[id]||'';renderAll()}
+function options(id,withAll=false){const s=document.getElementById(id);if(!s)return;const old=s.value;s.innerHTML=(withAll?'<option value="">كل المستويات</option>':'')+db.levels.map(l=>`<option>${esc(l)}</option>`).join('');if(db.levels.includes(old))s.value=old;else if(currentLevel)s.value=currentLevel}
+function setLevel(v){currentLevel=v;document.querySelectorAll('#llevel,#alevel,#tlevel').forEach(s=>s.value=v);document.getElementById('levelInfo').textContent=v?`العمل الحالي: ${v}`:'اختر المستوى الذي تعمل عليه.';renderAll()}
+function addLevel(){const v=document.getElementById('newLevel').value.trim();if(!v)return toast('اكتب اسم المستوى');if(!db.levels.includes(v))db.levels.push(v);currentLevel=v;document.getElementById('newLevel').value='';save();toast('تمت إضافة المستوى')}
+function addLearner(){const name=document.getElementById('lname').value.trim();const level=document.getElementById('llevel').value;if(!name||!level)return toast('أدخل الاسم واختر المستوى');db.learners.push({id:Date.now(),name,level,group:document.getElementById('lgroup').value.trim()});document.getElementById('lname').value='';save();toast('تمت إضافة المتعلم')}
+function clearLearners(){if(confirm('مسح جميع المتعلمين؟')){db.learners=[];save()}}
+function del(type,id){db[type]=db[type].filter(x=>x.id!==id);save()}
+function addAssessment(){const learner=document.getElementById('alearner').value,level=document.getElementById('alevel').value,mastery=Number(document.getElementById('amastery').value);if(!learner||!level||Number.isNaN(mastery))return toast('أكمل البيانات');db.assessments.push({id:Date.now(),learner,level,subject:document.getElementById('asubject').value,type:document.getElementById('atype').value,mastery,note:document.getElementById('anote').value.trim(),date:new Date().toLocaleDateString('ar-MA')});document.getElementById('anote').value='';save();toast('تم حفظ الرائز')}
+function addTracking(){const name=document.getElementById('tname').value.trim(),level=document.getElementById('tlevel').value,m=Number(document.getElementById('tmastery').value);if(!name||!level||Number.isNaN(m))return toast('أكمل البيانات');db.tracking.push({id:Date.now(),name,level,domain:document.getElementById('tdomain').value,mastery:m,date:new Date().toLocaleDateString('ar-MA')});document.getElementById('tname').value='';save();toast('تمت إضافة التتبع')}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function renderAll(){['dashLevel','llevel','alevel','tlevel'].forEach(id=>options(id));const dl=document.getElementById('dashLevel');if(dl){dl.innerHTML='<option value="">اختر المستوى</option>'+db.levels.map(l=>`<option>${esc(l)}</option>`).join('');dl.value=currentLevel||''}
+document.getElementById('sLearners').textContent=db.learners.length;document.getElementById('sLevel').textContent=currentLevel||'—';document.getElementById('sAssess').textContent=db.assessments.length;const vals=db.assessments.map(x=>x.mastery);document.getElementById('sMastery').textContent=vals.length?Math.round(vals.reduce((a,b)=>a+b,0)/vals.length)+'%':'0%';
+document.getElementById('learnerTable').innerHTML=db.learners.length?`<div class="tablewrap"><table class="table"><tr><th>الاسم</th><th>المستوى</th><th>الفوج</th><th></th></tr>${db.learners.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.level)}</td><td>${esc(x.group||'—')}</td><td><button class="danger" onclick="del('learners',${x.id})">حذف</button></td></tr>`).join('')}</table></div>`:'<div class="empty">لا يوجد متعلمون بعد.</div>';
+const as=db.assessments;document.getElementById('assessmentTable').innerHTML=as.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>المادة</th><th>الرائز</th><th>التحكم</th><th></th></tr>${as.slice().reverse().map(x=>`<tr><td>${esc(x.learner)}</td><td>${esc(x.subject)}</td><td>${esc(x.type)}</td><td>${x.mastery}%</td><td><button class="danger" onclick="del('assessments',${x.id})">حذف</button></td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد نتائج.</div>';
+document.getElementById('trackingTable').innerHTML=db.tracking.length?`<div class="tablewrap"><table class="table"><tr><th>المتعلم</th><th>المستوى</th><th>المجال</th><th>التحكم</th><th></th></tr>${db.tracking.slice().reverse().map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.level)}</td><td>${esc(x.domain)}</td><td>${x.mastery}%</td><td><button class="danger" onclick="del('tracking',${x.id})">حذف</button></td></tr>`).join('')}</table></div>`:'<div class="empty">لا توجد شبكات مسجلة.</div>';
+document.getElementById('alearner').innerHTML='<option value="">اختر المتعلم</option>'+db.learners.map(x=>`<option>${esc(x.name)}</option>`).join('');
+document.getElementById('levelsList').innerHTML=db.levels.length?db.levels.map(l=>`<span class="filetag">${esc(l)} <button class="danger" onclick="removeLevel('${encodeURIComponent(l)}')">×</button></span>`).join(' '):'<div class="empty">لم تتم إضافة مستويات بعد.</div>';
+const avg=db.assessments.length?Math.round(db.assessments.reduce((a,x)=>a+x.mastery,0)/db.assessments.length):0;document.getElementById('reportSummary').innerHTML=`<p>عدد المتعلمين: <b>${db.learners.length}</b></p><p>عدد الروائز: <b>${db.assessments.length}</b></p><p>متوسط التحكم المسجل: <b>${avg}%</b></p><p>عدد شبكات التتبع: <b>${db.tracking.length}</b></p>`;
 }
-function xmlLocal(el,tag){return el.getElementsByTagNameNS('*',tag)}
-function paragraphInfo(p){
-  let texts=[...p.getElementsByTagNameNS('*','t')].map(x=>x.textContent.trim()).filter(Boolean);
-  let text=texts.join(' ').replace(/\s+/g,' ').trim(); if(!text)return null;
-  let ppr=p.getElementsByTagNameNS('*','pPr')[0];
-  let lvl=ppr?.getAttribute('lvl'); lvl=lvl==null?null:Number(lvl);
-  let sizes=[],bold=false;
-  [...p.getElementsByTagNameNS('*','rPr'),...p.getElementsByTagNameNS('*','defRPr')].forEach(r=>{
-    let sz=r.getAttribute('sz'); if(sz) sizes.push(Number(sz));
-    if(r.getAttribute('b')==='1')bold=true;
-  });
-  return {text,lvl,sizes,bold};
-}
-function shapeKind(sp){
-  let ph=sp.getElementsByTagNameNS('*','ph')[0];
-  return ph?.getAttribute('type')||'';
-}
-function cleanHeading(t){return String(t||'').replace(/\s+/g,' ').trim().replace(/^[•·▪◦\-–—]+\s*/,'')}
-function compact(t,max=90){t=cleanHeading(t);if(t.length<=max)return t;let cut=t.slice(0,max);let i=Math.max(cut.lastIndexOf(' '),cut.lastIndexOf('،'));return cut.slice(0,i>35?i:max)+'…'}
-async function ppt(file){
-  if(!window.JSZip)throw Error('لم يتم تحميل محرك PPTX');
-  let z=await JSZip.loadAsync(file);
-  let names=Object.keys(z.files).filter(x=>/^ppt\/slides\/slide\d+\.xml$/.test(x))
-    .sort((a,b)=>+a.match(/slide(\d+)/)[1]-+b.match(/slide(\d+)/)[1]);
-  let slides=[];
-  for(let n of names){
-    let x=await z.files[n].async('text'),d=new DOMParser().parseFromString(x,'application/xml');
-    let shapes=[...d.getElementsByTagNameNS('*','sp')];
-    let ps=[];
-    shapes.forEach(sp=>{
-      let kind=shapeKind(sp);
-      [...sp.getElementsByTagNameNS('*','p')].forEach(p=>{let q=paragraphInfo(p);if(q)ps.push({...q,kind})});
-    });
-    if(!ps.length){slides.push({title:'',items:[]});continue}
-    let titleP=ps.find(p=>['title','ctrTitle','subTitle'].includes(p.kind));
-    let maxSize=Math.max(0,...ps.flatMap(p=>p.sizes));
-    if(!titleP) titleP=ps.find(p=>p.lvl===0 && (p.bold||Math.max(...(p.sizes||[0]))>=maxSize*.88));
-    if(!titleP) titleP=ps[0];
-    let title=cleanHeading(titleP.text);
-    let items=ps.filter(p=>p!==titleP).map(p=>{
-      let size=p.sizes.length?Math.max(...p.sizes):0;
-      let depth=p.lvl!=null?Math.max(1,Math.min(3,p.lvl+1)):(size>=maxSize*.9||p.bold?1:2);
-      return {text:compact(p.text),depth,bold:p.bold,size};
-    }).filter(p=>p.text && p.text!==title);
-    // Collapse duplicate adjacent bullets and keep the hierarchy visible in the source.
-    items=items.filter((p,i,a)=>i===0||p.text!==a[i-1].text);
-    slides.push({title,items});
-  }
-  return slides;
-}
-function buildHierarchy(slides,fileName){
-  let allText=slides.map(s=>[s.title,...s.items.map(i=>i.text)]).flat().join(' ');
-  let lang=detectLang(allText);
-  let rootTitle=slides.find(s=>s.title)?.title||fileName.replace(/\.pptx$/i,'');
-  let branches=[];
-  slides.forEach((s,si)=>{
-    if(!s.title && !s.items.length)return;
-    let branch={title:compact(s.title||`${lang.code==='ar'?'الشريحة':'Slide'} ${si+1}`,110),children:[]};
-    let current=null;
-    s.items.forEach(item=>{
-      if(item.depth<=1){current={title:compact(item.text),children:[]};branch.children.push(current)}
-      else if(current){current.children.push(compact(item.text))}
-      else branch.children.push({title:compact(item.text),children:[]});
-    });
-    // The first slide normally contains the lesson title; use its other headings as branches.
-    if(si===0 && branch.title===rootTitle && branch.children.length){
-      branch.children.forEach(c=>branches.push({title:c.title,children:c.children||[]}));
-    } else branches.push(branch);
-  });
-  // If there are many slides, keep all headings but avoid duplicate titles.
-  let seen=new Set();branches=branches.filter(b=>{let k=b.title.toLowerCase();if(seen.has(k))return false;seen.add(k);return true});
-  return {title:rootTitle,branches,lang,fileName};
-}
-document.getElementById('ppt').onchange=async e=>{
-  let f=e.target.files[0];if(!f)return;
-  pstatus.textContent='جاري استخراج العناوين الرئيسية والفرعية...';
-  try{
-    let slides=await ppt(f);
-    map=buildHierarchy(slides,f.name);
-    drawMap();
-    mapMeta.innerHTML=`الملف: <b>${esc(f.name)}</b> — اللغة المكتشفة: <b>${esc(map.lang.name)}</b> — ${slides.length} شريحة — تم الحفاظ على نص الملف دون ترجمة.`;
-    pstatus.innerHTML='<span class="badge ok">تم بناء الخريطة وفق بنية PPTX</span>';
-  }catch(x){pstatus.innerHTML='<span class="badge bad">تعذر قراءة الملف: '+esc(x.message)+'</span>'}
-};
-function clearMap(){map=null;mind.innerHTML='<div class="empty" style="margin:180px 20px">لم يتم تحميل درس.</div>';mapMeta.innerHTML='';pstatus.textContent='';document.getElementById('ppt').value=''}
-function nodeEl(text,cls){
-  let n=document.createElement('div');n.className='node '+cls;n.contentEditable='true';n.textContent=text;n.title='يمكن تعديل النص';return n;
-}
-function lineEl(x1,y1,x2,y2){
-  let l=document.createElement('div');l.className='line';let dx=x2-x1,dy=y2-y1;
-  l.style.left=x1+'px';l.style.top=y1+'px';l.style.width=Math.hypot(dx,dy)+'px';l.style.transform='rotate('+Math.atan2(dy,dx)+'rad)';return l;
-}
-function drawMap(){
-  if(!map)return;
-  mind.innerHTML='';let w=mind.clientWidth,h=mind.clientHeight,cx=w/2,cy=h/2;
-  let root=nodeEl(map.title,'root');root.style.left=(cx-90)+'px';root.style.top=(cy-28)+'px';mind.appendChild(root);
-  let branches=map.branches.slice(0,14),rad=Math.min(w,h)*.34;
-  branches.forEach((b,i)=>{
-    let ang=i*2*Math.PI/Math.max(1,branches.length)-Math.PI/2;
-    let bx=cx+Math.cos(ang)*rad,by=cy+Math.sin(ang)*rad;
-    let n=nodeEl(b.title,'branch');n.style.left=Math.max(5,Math.min(w-210,bx-75))+'px';n.style.top=Math.max(5,Math.min(h-60,by-25))+'px';
-    mind.appendChild(lineEl(cx,cy,parseFloat(n.style.left)+75,parseFloat(n.style.top)+25));mind.appendChild(n);
-    (b.children||[]).slice(0,8).forEach((ch,j)=>{
-      let sub=typeof ch==='string'?ch:ch.title;let offset=(j-((b.children||[]).length-1)/2)*62;
-      let sx=parseFloat(n.style.left)+(ang>-Math.PI/2&&ang<Math.PI/2?185:-55),sy=parseFloat(n.style.top)+25+offset;
-      let sn=nodeEl(sub,'sub');sn.style.left=Math.max(5,Math.min(w-190,sx))+'px';sn.style.top=Math.max(5,Math.min(h-55,sy))+'px';
-      mind.appendChild(lineEl(parseFloat(n.style.left)+75,parseFloat(n.style.top)+25,parseFloat(sn.style.left)+65,parseFloat(sn.style.top)+22));mind.appendChild(sn);
-    });
-  });
-}
-function exportMap(){
-  if(!map)return toast('أنشئ خريطة أولاً');
-  let lang=map.lang||detectLang(map.title), base=(map.fileName||'mindmap').replace(/\.pptx$/i,'');
-  let escSvg=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  let branches=map.branches||[];
-  let dir=lang.dir||'ltr', W=1400, rowH=92, H=Math.max(500,(branches.length+1)*rowH+100), rootX=dir==='rtl'?W-1120:1120, rootY=H/2;
-  let parts=[`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" direction="${dir}" xml:lang="${lang.code}">`,`<rect width="100%" height="100%" fill="#f8fafc"/>`];
-  let rootW=330, rootH=76, rootLeft=rootX-rootW/2, rootTop=rootY-rootH/2;
-  parts.push(`<rect x="${rootLeft}" y="${rootTop}" rx="22" width="${rootW}" height="${rootH}" fill="#172554"/>`);
-  parts.push(`<text x="${rootX}" y="${rootY+9}" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="white">${escSvg(map.title)}</text>`);
-  let leftX=dir==='rtl'?430:970;
-  branches.slice(0,16).forEach((b,i)=>{
-    let y=70+i*rowH, bw=310,bh=58,bx=leftX-bw/2;
-    parts.push(`<line x1="${dir==='rtl'?rootLeft:rootLeft+rootW}" y1="${rootY}" x2="${dir==='rtl'?bx+bw:bx}" y2="${y+bh/2}" stroke="#93c5fd" stroke-width="4"/>`);
-    parts.push(`<rect x="${bx}" y="${y}" rx="16" width="${bw}" height="${bh}" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>`);
-    parts.push(`<text x="${leftX}" y="${y+35}" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172554">${escSvg(b.title)}</text>`);
-    (b.children||[]).slice(0,6).forEach((c,j)=>{
-      let sy=y+bh+10+j*26, sx=dir==='rtl'?bx-18:bx+bw+18, anchor=dir==='rtl'?'end':'start';
-      parts.push(`<text x="${sx}" y="${sy}" text-anchor="${anchor}" font-family="Arial,sans-serif" font-size="15" fill="#334155">• ${escSvg(c)}</text>`);
-    });
-  });
-  parts.push('</svg>'); let svg=parts.join('');
-  let choice=prompt(lang.code==='ar'?'اختر التصدير: svg أو html أو txt أو png':'Choose export: svg, html, txt or png','svg');
-  if(!choice)return; choice=choice.toLowerCase().trim();
-  if(choice==='svg') dl(base+'-mindmap-'+lang.code+'.svg',svg,'image/svg+xml;charset=utf-8');
-  else if(choice==='txt'){
-    let out=[map.title,...branches.map((b,i)=>`${i+1}. ${b.title}`,...[])];
-    let lines=[map.title];branches.forEach((b,i)=>{lines.push(`${i+1}. ${b.title}`);(b.children||[]).forEach((c,j)=>lines.push(`   ${i+1}.${j+1} ${c}`))});
-    dl(base+'-mindmap-'+lang.code+'.txt',lines.join('\n'),'text/plain;charset=utf-8');
-  } else if(choice==='png'){
-    let blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),img=new Image();
-    img.onload=()=>{let c=document.createElement('canvas');c.width=W*2;c.height=H*2;let ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);ctx.scale(2,2);ctx.drawImage(img,0,0);URL.revokeObjectURL(url);c.toBlob(b=>{let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=base+'-mindmap-'+lang.code+'.png';a.click();},'image/png')};img.src=url;
-  } else {
-    let body=`<main class="map"><h1>${esc(map.title)}</h1>`+branches.map((b,i)=>`<section><h2>${i+1}. ${esc(b.title)}</h2>${(b.children||[]).map(c=>`<p>• ${esc(c)}</p>`).join('')}</section>`).join('')+`</main>`;
-    let h=`<!doctype html><html lang="${lang.code}" dir="${dir}"><meta charset="utf-8"><title>${esc(map.title)}</title><style>body{font-family:Arial,sans-serif;background:#f8fafc;padding:40px}.map{max-width:900px;margin:auto;background:white;padding:40px;border-radius:20px}h1{text-align:center;color:#172554}h2{color:#1d4ed8;margin-top:25px}p{padding:6px 20px}</style>${body}`;
-    dl(base+'-mindmap-'+lang.code+'.html',h,'text/html;charset=utf-8');
-  }
-  toast(lang.code==='ar'?'تم التصدير بلغة الملف':'Exported in the source language');
-}
-document.getElementById('restore').onchange=async e=>{try{D=Object.assign(base(),JSON.parse(await e.target.files[0].text()));save();toast('تم الاسترجاع')}catch(x){toast('ملف غير صالح')}};render();
-</script></body></html>
+function removeLevel(e){const l=decodeURIComponent(e);db.levels=db.levels.filter(x=>x!==l);db.learners=db.learners.filter(x=>x.level!==l);currentLevel=db.levels[0]||'';save()}
+function backup(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});download(blob,'riyadah-v13-1-backup.json')}
+function restoreFile(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);currentLevel=db.levels[0]||'';save();toast('تم الاسترجاع')}catch(_){toast('ملف غير صالح')}};r.readAsText(f)}
+function csv(rows){return rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\\n')}
+function exportCSV(type){let rows=[];if(type==='learners'){rows=[['الاسم','المستوى','الفوج'],...db.learners.map(x=>[x.name,x.level,x.group])]}else if(type==='assessments'){rows=[['المتعلم','المستوى','المادة','النوع','التحكم','التاريخ','ملاحظات'],...db.assessments.map(x=>[x.learner,x.level,x.subject,x.type,x.mastery,x.date,x.note])]}else{rows=[['المتعلم','المستوى','المجال','التحكم','التاريخ'],...db.tracking.map(x=>[x.name,x.level,x.domain,x.mastery,x.date])]}download(new Blob(['\\ufeff'+csv(rows)],{type:'text/csv;charset=utf-8'}),`riyadah-${type}.csv`)}
+function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+
+const drop=document.getElementById('drop'), fileInput=document.getElementById('pptx');
+fileInput.addEventListener('change',e=>loadPptx(e.target.files[0]));
+drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag')});drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag');loadPptx(e.dataTransfer.files[0])});
+async function loadPptx(file){if(!file)return;if(!file.name.toLowerCase().endsWith('.pptx'))return toast('اختر ملف PPTX');document.getElementById('filetag').innerHTML=`📎 ${esc(file.name)}`;try{const zip=await JSZip.loadAsync(file);const names=Object.keys(zip.files).filter(n=>/^ppt\\/slides\\/slide\\d+\\.xml$/.test(n));names.sort((a,b)=>parseInt(a.match(/\\d+/)[0])-parseInt(b.match(/\\d+/)[0]));pptSlides=[];for(const n of names){const xml=await zip.files[n].async('text');const doc=new DOMParser().parseFromString(xml,'application/xml');const texts=[...doc.getElementsByTagName('a:t')].map(x=>x.textContent.trim()).filter(Boolean);pptSlides.push(texts)}db.pptText=pptSlides;const count=pptSlides.flat().length;const st=document.getElementById('mapStatus');st.style.display='block';st.textContent=`تم استخراج ${pptSlides.length} شريحة و${count} عبارة. اضغط «توليد الخريطة».`;toast('تم تحميل PPTX')}catch(e){toast('تعذر قراءة ملف PPTX')}}
+function clean(t){return t.replace(/\\s+/g,' ').replace(/[•·]+/g,' ').trim()}
+function classify(slide){const a=slide.map(clean).filter(x=>x.length>1);if(!a.length)return null;let title=a.find(x=>x.length<100)||a[0];let subs=a.filter(x=>x!==title).filter(x=>x.length<180).slice(0,5);return {title,subs}}
+function generateMap(){if(!pptSlides.length)return toast('حمّل ملف PPTX أولاً');let all=pptSlides.map(classify).filter(Boolean);let title=all[0]?.title||'خريطة الدرس';let branches=[];for(const s of all){if(s.title===title&&branches.length===0)continue;branches.push({title:s.title,subs:s.subs})}branches=branches.slice(0,4);if(branches.length<2){const flat=pptSlides.flat().map(clean).filter(x=>x.length>2);title=flat[0]||'خريطة الدرس';branches=[];for(let i=1;i<flat.length;i+=Math.ceil((flat.length-1)/4))branches.push({title:flat[i],subs:flat.slice(i+1,i+4)}) ;branches=branches.slice(0,4)}
+db.map={title,branches,lang:detectLang(pptSlides.flat().join(' '))};renderMap();save();toast('تم توليد الخريطة تلقائياً')}
+function detectLang(t){const ar=(t.match(/[\\u0600-\\u06FF]/g)||[]).length,fr=(t.match(/[àâçéèêëîïôûùüÿœ]/gi)||[]).length;return ar>fr?'ar':(/[A-Za-z]/.test(t)?'fr':'ar')}
+function renderMap(){const m=db.map;if(!m.branches?.length)return;const bs=m.branches;let html=`<div class="rootnode">${esc(m.title)}</div>`;const cls=['b1','b2','b3','b4'];const cs=['c1','c2','c3','c4'];bs.forEach((b,i)=>{html+=`<div class="connector ${cs[i]}"></div><div class="branch ${cls[i]}"><h3>➤ ${esc(b.title)}</h3><ul>${b.subs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`});document.getElementById('mindmapCanvas').innerHTML=html}
+function exportMap(){if(!db.map.branches?.length)return toast('ولّد الخريطة أولاً');const lang=document.getElementById('exportLang').value==='auto'?db.map.lang:document.getElementById('exportLang').value;let title=db.map.title;let lines=[title,...db.map.branches.flatMap(b=>[b.title,...b.subs.map(s=>'  - '+s)])];const text=lines.join('\\n');const ext='txt';download(new Blob(['\\ufeff'+text],{type:'text/plain;charset=utf-8'}),`mindmap-${lang}.txt`);toast('تم التصدير بلغة الملف')}
+renderAll();renderMap();
+</script>
+</body></html>

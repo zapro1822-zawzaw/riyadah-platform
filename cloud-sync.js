@@ -30,32 +30,63 @@
   sb?.auth.onAuthStateChange(()=>{last='';schoolId=null});
   setInterval(tick,3500);setTimeout(tick,1200);
 
-  const adminCss=`<style id="riyadah-admin-css">#riyadah-admin-launch{position:fixed;right:18px;bottom:18px;z-index:99999;border:0;border-radius:14px;padding:12px 16px;background:#0b5ed7;color:white;font-weight:900;box-shadow:0 8px 30px #0003;cursor:pointer;font-family:inherit}#riyadah-admin-overlay{position:fixed;inset:0;z-index:100000;background:#0008;display:none;align-items:center;justify-content:center;padding:18px;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}#riyadah-admin-modal{width:min(1050px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:20px;direction:rtl;box-shadow:0 25px 80px #0008}#riyadah-admin-modal h2{margin:0 0 14px}.ra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-bottom:18px}.ra-card{background:#f6f9fc;border:1px solid #e1e8f0;border-radius:14px;padding:14px}.ra-card b{display:block;font-size:24px}.ra-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.ra-toolbar input,.ra-toolbar select{padding:10px;border:1px solid #cbd5df;border-radius:10px;font:inherit}.ra-table{width:100%;border-collapse:collapse;font-size:14px}.ra-table th,.ra-table td{padding:9px;border-bottom:1px solid #e7edf3;text-align:right;vertical-align:middle}.ra-table th{background:#f4f7fa}.ra-btn{border:0;border-radius:8px;padding:7px 10px;font:inherit;font-weight:800;cursor:pointer;margin:2px}.ra-ok{background:#dff7ec;color:#08734f}.ra-warn{background:#fff1d8;color:#8a5200}.ra-danger{background:#ffe1e1;color:#9b2020}.ra-close{float:left;border:0;background:#eef2f6;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:900}.ra-empty{padding:20px;text-align:center;color:#66788a}.ra-error{padding:12px;background:#fff0f0;color:#9b2020;border-radius:12px;line-height:1.8}</style>`;
+  const adminCss=`<style id="riyadah-admin-css">
+#riyadah-admin-launch{position:fixed;right:18px;bottom:18px;z-index:99999;border:0;border-radius:14px;padding:12px 16px;background:#0b5ed7;color:#fff;font-weight:900;box-shadow:0 8px 30px #0003;cursor:pointer;font-family:inherit}
+#riyadah-admin-overlay{position:fixed;inset:0;z-index:100000;background:#071525cc;display:none;align-items:center;justify-content:center;padding:14px;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
+#riyadah-admin-modal{width:min(1180px,100%);max-height:94vh;overflow:auto;background:#f4f7fb;border-radius:24px;padding:0;direction:rtl;box-shadow:0 25px 90px #0009}
+.ra-head{background:linear-gradient(135deg,#0b2038,#1769d3);color:#fff;padding:22px 24px;border-radius:24px 24px 0 0}.ra-head-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.ra-head h2{margin:0;font-size:24px}.ra-head p{margin:6px 0 0;opacity:.82}.ra-close{border:0;background:#ffffff20;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:900}
+.ra-content{padding:18px}.ra-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:15px}.ra-card{background:#fff;border:1px solid #e1e8f0;border-radius:15px;padding:14px;box-shadow:0 4px 15px #102a4308}.ra-card .label{font-size:12px;color:#66788a}.ra-card b{display:block;font-size:27px;margin-top:4px}.ra-card.accent{background:#eaf3ff;border-color:#b9d7fb}.ra-card.green{background:#e8f8f1;border-color:#bde7d3}.ra-card.red{background:#fff0f0;border-color:#f3c5c5}
+.ra-sections{display:grid;grid-template-columns:1fr 1.8fr;gap:14px}.ra-panel{background:#fff;border:1px solid #e1e8f0;border-radius:17px;padding:16px;margin-bottom:14px}.ra-panel h3{margin:0 0 12px}.ra-panel-sub{font-size:13px;color:#66788a;margin:-5px 0 12px}.ra-form{display:grid;gap:9px}.ra-form input,.ra-form select{width:100%;padding:11px;border:1px solid #cbd5df;border-radius:10px;font:inherit;background:#fff}.ra-form .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ra-btn{border:0;border-radius:9px;padding:9px 12px;font:inherit;font-weight:850;cursor:pointer;margin:2px}.ra-primary{background:#1769d3;color:#fff}.ra-ok{background:#dff7ec;color:#08734f}.ra-warn{background:#fff1d8;color:#8a5200}.ra-danger{background:#ffe1e1;color:#9b2020}.ra-light{background:#eef3f8;color:#173b67}.ra-btn:disabled{opacity:.5;cursor:not-allowed}.ra-note{padding:11px 12px;border-radius:11px;background:#eef6ff;color:#1558a0;font-size:13px;line-height:1.7}.ra-error{padding:11px 12px;background:#fff0f0;color:#9b2020;border-radius:11px;font-size:13px;line-height:1.7}.ra-success{padding:11px 12px;background:#e7f7f0;color:#08734f;border-radius:11px;font-size:13px;line-height:1.7}
+.ra-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.ra-toolbar input,.ra-toolbar select{padding:10px;border:1px solid #cbd5df;border-radius:10px;font:inherit;background:#fff}.ra-toolbar input{flex:1;min-width:190px}.ra-table-wrap{overflow:auto}.ra-table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}.ra-table th,.ra-table td{padding:10px;border-bottom:1px solid #e7edf3;text-align:right;vertical-align:middle}.ra-table th{background:#f5f8fb;color:#526578}.ra-status{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:900}.ra-active{background:#def7ec;color:#086b4b}.ra-inactive{background:#fee7e7;color:#9b2020}.ra-role{display:inline-block;padding:4px 8px;border-radius:999px;background:#edf4ff;color:#1558a0;font-size:11px;font-weight:900}.ra-actions{white-space:nowrap}.ra-empty{padding:28px;text-align:center;color:#66788a}.ra-loading{padding:30px;text-align:center;color:#1558a0}
+@media(max-width:850px){.ra-grid{grid-template-columns:repeat(2,1fr)}.ra-sections{grid-template-columns:1fr}.ra-form .two{grid-template-columns:1fr}.ra-content{padding:12px}.ra-head{padding:17px}.ra-head h2{font-size:20px}}
+</style>`;
 
-  async function adminData(){const [p,w,m]=await Promise.all([sb.from('profiles').select('id,full_name,role,requested_role,school_name,is_active,created_at,updated_at').order('created_at',{ascending:false}),sb.from('workspaces').select('id,name,created_by,created_at').order('created_at',{ascending:false}),sb.from('workspace_members').select('workspace_id,user_id,role,status,created_at,updated_at')]);if(p.error)throw p.error;if(w.error)throw w.error;if(m.error)throw m.error;return{profiles:p.data||[],workspaces:w.data||[],members:m.data||[]}}
-  async function setProfile(id,patch){const {error}=await sb.from('profiles').update(patch).eq('id',id);if(error)throw error}
+  async function adminCall(action,body={}){
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session)throw Error('انتهت جلسة المدير. أعد تسجيل الدخول.');
+    const {data,error}=await sb.functions.invoke('admin-user-management',{body:{action,...body}});
+    if(error)throw error;
+    if(data?.error)throw Error(data.error);
+    return data;
+  }
+
   function roleLabel(r){return r==='admin'?'مدير':r==='inspector'?'مفتش':'أستاذ'}
 
   async function renderAdmin(doc){
     const root=doc?.getElementById('riyadah-admin-modal');
     if(!root)return;
-    root.innerHTML='<div class="ra-empty">جاري تحميل بيانات الإدارة…</div>';
+    root.innerHTML='<div class="ra-loading">⏳ جاري تحميل لوحة الإدارة…</div>';
     try{
-      const d=await adminData();
-      const pending=d.profiles.filter(p=>!p.is_active||p.requested_role==='inspector');
-      root.innerHTML=`<button class="ra-close" id="ra-close">إغلاق</button><h2>🛡️ لوحة قيادة المدير</h2><div class="ra-grid"><div class="ra-card">المستخدمون<b>${d.profiles.length}</b></div><div class="ra-card">طلبات تحتاج مراجعة<b>${pending.length}</b></div><div class="ra-card">المؤسسات/الفضاءات<b>${d.workspaces.length}</b></div><div class="ra-card">العضويات<b>${d.members.length}</b></div></div><div class="ra-toolbar"><input id="ra-search" placeholder="بحث بالاسم أو المؤسسة أو الدور"><select id="ra-filter"><option value="all">كل المستخدمين</option><option value="pending">طلبات/غير مفعلة</option><option value="teacher">أساتذة</option><option value="inspector">مفتشون</option><option value="admin">مديرون</option><option value="inactive">غير نشطين</option></select><button class="ra-btn ra-ok" id="ra-refresh">↻ تحديث</button></div><div id="ra-body"></div>`;
+      const {users}=await adminCall('list');
+      const profiles=users||[];
+      const stats={all:profiles.length,active:profiles.filter(u=>u.profile?.is_active).length,inactive:profiles.filter(u=>u.profile?.is_active===false).length,teachers:profiles.filter(u=>u.profile?.role==='teacher').length,inspectors:profiles.filter(u=>u.profile?.role==='inspector').length};
+      root.innerHTML=`<div class="ra-head"><div class="ra-head-top"><div><h2>🛡️ لوحة قيادة المدير</h2><p>إدارة المستخدمين والأساتذة والمفتشين وصلاحيات الولوج</p></div><button class="ra-close" id="ra-close">✕ إغلاق</button></div></div><div class="ra-content"><div class="ra-grid"><div class="ra-card accent"><span class="label">إجمالي الحسابات</span><b>${stats.all}</b></div><div class="ra-card green"><span class="label">الحسابات النشطة</span><b>${stats.active}</b></div><div class="ra-card red"><span class="label">الحسابات المعطلة</span><b>${stats.inactive}</b></div><div class="ra-card"><span class="label">الأساتذة</span><b>${stats.teachers}</b></div><div class="ra-card"><span class="label">المفتشون</span><b>${stats.inspectors}</b></div></div><div class="ra-sections"><div><div class="ra-panel"><h3>➕ إضافة أستاذ</h3><div class="ra-panel-sub">ينشئ المدير حساب الأستاذ مباشرة. سيحصل الأستاذ على بريد إلكتروني وكلمة مرور مؤقتة.</div><div id="ra-add-msg"></div><div class="ra-form"><input id="ra-name" placeholder="الاسم الكامل للأستاذ"><input id="ra-email" type="email" placeholder="البريد الإلكتروني"><div class="two"><input id="ra-pass" type="password" placeholder="كلمة مرور مؤقتة (8 أحرف على الأقل)"><input id="ra-phone" placeholder="الهاتف (اختياري)"></div><input id="ra-school" placeholder="المؤسسة / المديرية (اختياري)"><button class="ra-btn ra-primary" id="ra-add">👨‍🏫 إنشاء حساب الأستاذ</button></div></div><div class="ra-panel"><h3>ℹ️ صلاحيات المدير</h3><div class="ra-note">المدير هو الوحيد الذي يدير الحسابات. يمكنه تفعيل أو تعطيل الحسابات، وتعيين الصفة أستاذ أو مفتش. حساب المدير الحالي محمي ولا يمكن تعطيله من هذه اللوحة.</div></div></div><div><div class="ra-panel"><h3>👥 إدارة المستخدمين</h3><div class="ra-toolbar"><input id="ra-search" placeholder="بحث بالاسم أو البريد أو المؤسسة"><select id="ra-filter"><option value="all">كل الحسابات</option><option value="teacher">الأساتذة</option><option value="inspector">المفتشون</option><option value="active">النشطون</option><option value="inactive">المعطلون</option></select><button class="ra-btn ra-light" id="ra-refresh">↻ تحديث</button></div><div id="ra-body"></div></div></div></div></div>`;
       doc.getElementById('ra-close').onclick=()=>{doc.getElementById('riyadah-admin-overlay').style.display='none'};
       doc.getElementById('ra-refresh').onclick=()=>renderAdmin(doc);
+
+      const addMsg=doc.getElementById('ra-add-msg');
+      doc.getElementById('ra-add').onclick=async()=>{
+        const btn=doc.getElementById('ra-add');btn.disabled=true;addMsg.innerHTML='';
+        try{
+          const name=doc.getElementById('ra-name').value.trim(),email=doc.getElementById('ra-email').value.trim(),password=doc.getElementById('ra-pass').value,phone=doc.getElementById('ra-phone').value.trim(),school=doc.getElementById('ra-school').value.trim();
+          if(!name||!email||password.length<8)throw Error('أدخل الاسم والبريد وكلمة مرور مؤقتة من 8 أحرف على الأقل.');
+          await adminCall('create_teacher',{full_name:name,email,password,phone,school_name:school});
+          addMsg.innerHTML='<div class="ra-success">✅ تم إنشاء حساب الأستاذ وتفعيله بنجاح. احتفظ بكلمة المرور المؤقتة وشاركها مع الأستاذ بشكل آمن.</div>';
+          doc.getElementById('ra-name').value='';doc.getElementById('ra-email').value='';doc.getElementById('ra-pass').value='';doc.getElementById('ra-phone').value='';
+          setTimeout(()=>renderAdmin(doc),700);
+        }catch(e){addMsg.innerHTML=`<div class="ra-error">❌ ${e.message||e}</div>`}finally{btn.disabled=false}
+      };
+
       const body=doc.getElementById('ra-body');
       const draw=()=>{
         const q=doc.getElementById('ra-search').value.trim().toLowerCase(),f=doc.getElementById('ra-filter').value;
-        const rows=d.profiles.filter(p=>{const fm=f==='all'||(f==='pending'&&(!p.is_active||p.requested_role==='inspector'))||(f==='inactive'&&!p.is_active)||p.role===f;const qm=!q||[p.full_name,p.school_name,p.role,p.requested_role].some(v=>String(v||'').toLowerCase().includes(q));return fm&&qm});
-        const adminId=d.profiles.find(x=>x.role==='admin')?.id;
-        body.innerHTML=rows.length?`<table class="ra-table"><thead><tr><th>المستخدم</th><th>الصفة</th><th>المؤسسة</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody>${rows.map(p=>`<tr><td><b>${p.full_name||'بدون اسم'}</b><br><small>${p.id.slice(0,8)}…</small></td><td>${roleLabel(p.role)}${p.requested_role&&p.requested_role!==p.role?`<br><small>مطلوب: ${roleLabel(p.requested_role)}</small>`:''}</td><td>${p.school_name||'—'}</td><td>${p.is_active?'🟢 نشط':'🟠 غير مفعل'}</td><td>${p.id!==adminId?`<button class="ra-btn ra-ok" data-act="activate" data-id="${p.id}">تفعيل</button><button class="ra-btn ra-warn" data-act="teacher" data-id="${p.id}">أستاذ</button><button class="ra-btn ra-warn" data-act="inspector" data-id="${p.id}">مفتش</button><button class="ra-btn ra-danger" data-act="deactivate" data-id="${p.id}">تعليق</button>`:'حساب الإدارة'}</td></tr>`).join('')}</tbody></table>`:'<div class="ra-empty">لا توجد نتائج.</div>`;
-        body.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{const id=b.dataset.id,act=b.dataset.act;b.disabled=true;try{if(act==='activate')await setProfile(id,{is_active:true});if(act==='deactivate')await setProfile(id,{is_active:false});if(act==='teacher')await setProfile(id,{role:'teacher',requested_role:'teacher',is_active:true});if(act==='inspector')await setProfile(id,{role:'inspector',requested_role:'inspector',is_active:true});await renderAdmin(doc)}catch(e){alert('تعذر تنفيذ العملية: '+(e.message||e))}finally{b.disabled=false}});
+        const rows=profiles.filter(u=>{const p=u.profile||{};const fm=f==='all'||(f==='active'&&p.is_active)||(f==='inactive'&&p.is_active===false)||p.role===f;const qm=!q||[u.email,p.full_name,p.school_name,p.role,p.requested_role].some(v=>String(v||'').toLowerCase().includes(q));return fm&&qm});
+        const currentAdmin=profiles.find(u=>u.profile?.role==='admin');
+        body.innerHTML=rows.length?`<div class="ra-table-wrap"><table class="ra-table"><thead><tr><th>المستخدم</th><th>الصفة</th><th>المؤسسة</th><th>الحالة</th><th>آخر دخول</th><th>الإجراءات</th></tr></thead><tbody>${rows.map(u=>{const p=u.profile||{},isAdmin=u.id===currentAdmin?.id;return `<tr><td><b>${p.full_name||'بدون اسم'}</b><br><small>${u.email||'—'}</small></td><td><span class="ra-role">${roleLabel(p.role)}</span></td><td>${p.school_name||'—'}</td><td><span class="ra-status ${p.is_active?'ra-active':'ra-inactive'}">${p.is_active?'🟢 نشط':'🔴 معطل'}</span></td><td>${u.last_sign_in_at?new Date(u.last_sign_in_at).toLocaleString('ar-MA'):'لم يدخل بعد'}</td><td class="ra-actions">${isAdmin?'<b>حساب المدير</b>':`${p.is_active?`<button class="ra-btn ra-danger" data-act="deactivate" data-id="${u.id}">تعطيل</button>`:`<button class="ra-btn ra-ok" data-act="activate" data-id="${u.id}">تفعيل</button>`}<button class="ra-btn ra-warn" data-act="teacher" data-id="${u.id}">أستاذ</button><button class="ra-btn ra-warn" data-act="inspector" data-id="${u.id}">مفتش</button>`}</td></tr>`}).join('')}</tbody></table></div>`:'<div class="ra-empty">لا توجد حسابات مطابقة للبحث.</div>';
+        body.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{const act=b.dataset.act;if(act==='activate'||act==='deactivate')await adminCall('set_status',{user_id:b.dataset.id,is_active:act==='activate'});else await adminCall('set_role',{user_id:b.dataset.id,role:act});await renderAdmin(doc)}catch(e){alert('تعذر تنفيذ العملية: '+(e.message||e))}finally{b.disabled=false}});
       };
       doc.getElementById('ra-search').oninput=draw;doc.getElementById('ra-filter').onchange=draw;draw();
-    }catch(e){root.innerHTML=`<div class="ra-error"><b>تعذر تحميل لوحة الإدارة.</b><br>${String(e?.message||e)}</div>`}
+    }catch(e){root.innerHTML=`<div class="ra-panel ra-error"><b>تعذر تحميل لوحة الإدارة.</b><br>${e.message||e}<br><small>تحقق من اتصال Supabase ومن نشر وظيفة إدارة المستخدمين.</small></div>`}
   }
 
   async function mountAdmin(){
@@ -67,10 +98,11 @@
     if(error||p?.role!=='admin'||p?.is_active!==true)return;
     const doc=frame.contentDocument;
     if(!doc.getElementById('riyadah-admin-css'))doc.head.insertAdjacentHTML('beforeend',adminCss);
-    if(doc.getElementById('riyadah-admin-launch'))return;
-    const btn=doc.createElement('button');btn.id='riyadah-admin-launch';btn.type='button';btn.textContent='🛡️ لوحة المدير';doc.body.appendChild(btn);
-    const ov=doc.createElement('div');ov.id='riyadah-admin-overlay';ov.innerHTML='<div id="riyadah-admin-modal"></div>';doc.body.appendChild(ov);
-    btn.onclick=()=>{ov.style.display='flex';renderAdmin(doc)};
+    let btn=doc.getElementById('riyadah-admin-launch');
+    if(!btn){btn=doc.createElement('button');btn.id='riyadah-admin-launch';btn.type='button';btn.textContent='🛡️ إدارة المنصة';doc.body.appendChild(btn)}
+    let ov=doc.getElementById('riyadah-admin-overlay');
+    if(!ov){ov=doc.createElement('div');ov.id='riyadah-admin-overlay';ov.innerHTML='<div id="riyadah-admin-modal"></div>';doc.body.appendChild(ov)}
+    if(!btn.__bound){btn.__bound=true;btn.onclick=()=>{ov.style.display='flex';renderAdmin(doc)}}
   }
   setInterval(mountAdmin,2200);setTimeout(mountAdmin,1800);
 

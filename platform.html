@@ -4,37 +4,35 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2038"><title>رَوّاد — المنصة الأصلية</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:#0b2038}.loading{min-height:100vh;display:grid;place-items:center;color:#fff;font-size:18px;text-align:center;padding:20px}.error{max-width:560px;line-height:1.8}.btn{border:0;border-radius:10px;padding:10px 16px;background:#1769d3;color:#fff;font-weight:800;cursor:pointer;margin-top:12px}</style>
+<style>html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:#0b2038}.loading{min-height:100vh;display:grid;place-items:center;color:#fff;font-size:18px;text-align:center;padding:20px}.error{max-width:600px;line-height:1.9}.btn{border:0;border-radius:10px;padding:10px 16px;background:#1769d3;color:#fff;font-weight:800;cursor:pointer;margin-top:12px}</style>
 </head>
 <body>
 <div id="loading" class="loading">جاري فتح المنصة الأصلية…</div>
 <script>
-const URL='https://bnqbavlkvrpcbhqxctda.supabase.co';
-const KEY='sb_publishable_VdXBsOFWR1Y6N7GNm8lh_g_0Vl7319q';
-const sb=supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-const DATA_KEY='riyadah_v14_ultimate',AUTH_KEY='riyadah_v15_auth_v1',SESSION_KEY='riyadah_v15_session_v1';
+const SUPABASE_URL='https://bnqbavlkvrpcbhqxctda.supabase.co';
+const SUPABASE_KEY='sb_publishable_VdXBsOFWR1Y6N7GNm8lh_g_0Vl7319q';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const AUTH_KEY='riyadah_v15_auth_v1',SESSION_KEY='riyadah_v15_session_v1',DATA_KEY='riyadah_v14_ultimate';
 const $=id=>document.getElementById(id);
 async function hash(v){const b=new TextEncoder().encode(v),h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-async function withTimeout(p,ms){return await Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('انتهت مهلة الاتصال بـ Supabase')),ms))])}
-function base(profile){return{school:{name:profile?.school_name||'',teacher:profile?.full_name||'',year:'2026/2027'},levels:[],classes:[],students:[],assess:[],tracking:[],math:{},fluency:[],groups:[],inspectorNotes:'',links:{classroom:'',canva:'',massar:''}}}
+async function withTimeout(p,ms){return await Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('انتهت مهلة التحقق من الحساب')),ms))])}
 async function main(){
  try{
-  const sessionResult=await withTimeout(sb.auth.getSession(),7000);
-  const session=sessionResult.data?.session;
-  if(!session){location.replace('/');return}
-  const user=session.user;
-  const p=await withTimeout(sb.from('profiles').select('id,full_name,role,school_name,is_active').eq('id',user.id).maybeSingle(),7000);
-  if(p.error)throw p.error;
-  const profile=p.data;
-  if(!profile||!profile.is_active||!['admin','teacher'].includes(profile.role)){await sb.auth.signOut();location.replace('/');return}
-  const r=await withTimeout(sb.from('user_data').select('data').eq('user_id',user.id).maybeSingle(),7000);
-  if(r.error)throw r.error;
-  let data=r.data?.data;
-  if(!data){data=base(profile);const w=await withTimeout(sb.from('user_data').upsert({user_id:user.id,data,updated_at:new Date().toISOString()},{onConflict:'user_id'}),7000);if(w.error)throw w.error}
-  localStorage.setItem(DATA_KEY,JSON.stringify(data));
-  localStorage.setItem(AUTH_KEY,JSON.stringify({username:profile.full_name||user.email,hash:await hash(user.id+':riyadah'),created:new Date().toISOString()}));
-  sessionStorage.setItem(SESSION_KEY,JSON.stringify({username:profile.full_name||user.email,expires:Date.now()+8*60*60*1000,role:profile.role,cloudUserId:user.id}));
-  location.replace('/app.html');
+  // Verify the real Supabase user. We deliberately do not query profiles/user_data here;
+  // opening the legacy local platform must not depend on database RLS policies.
+  const r=await withTimeout(sb.auth.getUser(),8000);
+  if(r.error||!r.data?.user){location.replace('/');return}
+  const user=r.data.user;
+  const username=user.user_metadata?.full_name||user.user_metadata?.name||user.email||'المستخدم';
+  // The original app has its own local authentication gate. Bridge the already-authenticated
+  // Supabase user into that gate so app.html opens directly.
+  localStorage.setItem(AUTH_KEY,JSON.stringify({username,hash:await hash(user.id+':riyadah'),created:new Date().toISOString(),cloudUserId:user.id,email:user.email||''}));
+  sessionStorage.setItem(SESSION_KEY,JSON.stringify({username,expires:Date.now()+8*60*60*1000,role:user.user_metadata?.role||'user',cloudUserId:user.id,email:user.email||''}));
+  // Keep existing local data if present. If none exists, let app.html create its own clean base.
+  if(!localStorage.getItem(DATA_KEY)){
+   localStorage.setItem(DATA_KEY,JSON.stringify({school:{name:'',teacher:username,year:'2026/2027'},levels:[],classes:[],students:[],assess:[],tracking:[],math:{},fluency:[],groups:[],inspectorNotes:'',links:{classroom:'',canva:'',massar:''}}));
+  }
+  location.replace('/app.html?cloud=1');
  }catch(e){console.error(e);$('loading').innerHTML='<div class="error">❌ تعذر فتح المنصة الأصلية.<br>'+String(e?.message||e)+'<br><button class="btn" onclick="location.reload()">إعادة المحاولة</button></div>'}
 }
 main();

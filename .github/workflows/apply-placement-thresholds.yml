@@ -1,4 +1,4 @@
-name: Apply placement threshold update
+name: Fix assessment insert schema
 
 on:
   push:
@@ -16,61 +16,26 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Patch V17 assessment model
+      - name: Fix assessment save payload
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re
-
           p = Path('v17.html')
           s = p.read_text(encoding='utf-8')
 
-          # Correct the platform brand everywhere in V17.
-          s = s.replace('رَوّاد', 'رُوَّاد').replace('رَوّاد V17', 'رُوَّاد V17')
+          old = "await insert('assessments',{student_id:$(\'ast\').value,subject:$(\'asub\').value,assessment_type:'موضعة',placement_threshold:$(\'aplace\').value,mastery:$(\'aplace\').value,score:null,notes:$(\'anote\').value,assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
+          new = "await insert('assessments',{student_id:$(\'ast\').value,kind:$(\'asub\').value,title:'رائز الموضعة',mastery:$(\'aplace\').value,score:null,criteria:{placement_threshold:$(\'aplace\').value,notes:$(\'anote\').value||''},assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
 
-          new_block = r'''function placementLevels(subject){
-          if(subject==='العربية') return ['مبتدئ','حرف','كلمة','فقرة','أقصوصة'];
-          if(subject==='الرياضيات') return ['مبتدئ','رقم','جمع','طرح','ضرب','قسمة'];
-          return ['Débutant','Lettre','Mot simple','Mot avancé','Mot avec GC','Phrase DP','Texte'];
-          }
-          function placementOptions(subject,selected=''){
-            return placementLevels(subject).map(x=>`<option ${x===selected?'selected':''}>${esc(x)}</option>`).join('');
-          }
-          function updatePlacementOptions(){
-            let s=$('asub'),p=$('aplace');
-            if(s&&p){let old=p.value;p.innerHTML=placementOptions(s.value);if(old&&placementLevels(s.value).includes(old))p.value=old;}
-          }
-          function assessmentsPage(){
-            return shell('📝 الروائز والتقويم','تسجيل عتبة الموضعة التي وصل إليها المتعلم في كل رائز',`<div class="card"><form onsubmit="event.preventDefault();saveAssessment()" class="grid g3">
-            <div class="field"><label>التلميذ</label><select id="ast">${C.students.map(s=>`<option value="${s.id}">${esc((s.first_name||'')+' '+(s.last_name||''))}</option>`).join('')}</select></div>
-            <div class="field"><label>المادة</label><select id="asub" onchange="updatePlacementOptions()"><option>العربية</option><option>الفرنسية</option><option>الرياضيات</option></select></div>
-            <div class="field"><label>عتبة الموضعة</label><select id="aplace">${placementOptions('العربية')}</select></div>
-            <div class="field"><label>تاريخ الرائز</label><input id="adate" type="date" value="${new Date().toISOString().slice(0,10)}"></div>
-            <div class="field"><label>ملاحظات</label><input id="anote"></div>
-            <div><button class="btn primary">➕ تسجيل الرائز</button></div>
-            </form></div>
-            <div class="card"><div class="alert a-orange">كل رائز يسجل عتبة الموضعة فقط. لا توجد خانة قبلي/بعدي ولا نسبة تقدم.</div></div>
-            <div class="card tablewrap"><table class="table"><tr><th>التلميذ</th><th>المادة</th><th>عتبة الموضعة</th><th>التاريخ</th><th></th></tr>${C.assessments.map(x=>{let s=C.students.find(z=>z.id===x.student_id);return `<tr><td>${esc(s?(s.first_name+' '+s.last_name):x.student_id)}</td><td>${esc(x.subject||'')}</td><td><span class="badge">${esc(x.placement_threshold||x.mastery||'')}</span></td><td>${esc(x.assessed_at||'')}</td><td><button class="btn danger" onclick="remove('assessments','${x.id}')">حذف</button></td></tr>`}).join('')||'<tr><td colspan="5">لا توجد روائز</td></tr>'}</table></div>`)
-          }
-          async function saveAssessment(){
-            try{
-              await insert('assessments',{student_id:$('ast').value,subject:$('asub').value,assessment_type:'موضعة',placement_threshold:$('aplace').value,mastery:$('aplace').value,score:null,notes:$('anote').value,assessed_at:$('adate').value||new Date().toISOString().slice(0,10),created_by:user.id});
-            }catch(e){toast(e.message)}
-          }
-          '''
-
-          # Replace the old assessment page/save function pair.
-          pattern = r"function assessmentsPage\(\)\{.*?async function saveAssessment\(\)\{.*?\}\nfunction supportPage"
-          replacement = new_block + "\nfunction supportPage"
-          s2, n = re.subn(pattern, replacement, s, count=1, flags=re.S)
-          if n != 1:
-              raise SystemExit('assessment block not found; aborting without modifying v17.html')
-          s = s2
-
-          # Replace percentage-based assessment CSV columns with placement threshold.
-          s = s.replace("let rows=[['student','subject','score','type']];", "let rows=[['student','subject','placement_threshold','date']];")
-          s = s.replace("rows.push([s?.first_name+' '+s?.last_name,x.subject,x.score,x.assessment_type||x.type])", "rows.push([s?.first_name+' '+s?.last_name,x.subject,x.placement_threshold||x.mastery||'',x.assessed_at||''])")
-          s = s.replace("riyadah-assessments.csv", "rouad-assessments.csv")
+          if old not in s:
+              # Fallback: replace the complete insert expression inside saveAssessment.
+              pattern = r"await insert\('assessments',\{.*?created_by:user\.id\}\);"
+              s2, n = re.subn(pattern, new, s, count=1)
+              if n != 1:
+                  raise SystemExit('assessment insert expression not found; aborting')
+              s = s2
+          else:
+              s = s.replace(old, new, 1)
 
           p.write_text(s, encoding='utf-8')
           PY
@@ -81,5 +46,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add v17.html
           git diff --cached --quiet && exit 0
-          git commit -m 'feat: replace assessment percentages with placement thresholds'
+          git commit -m 'fix: align assessment insert with database schema'
           git push

@@ -25,10 +25,9 @@ jobs:
           s = p.read_text(encoding='utf-8')
 
           old = "await insert('assessments',{student_id:$(\'ast\').value,subject:$(\'asub\').value,assessment_type:'موضعة',placement_threshold:$(\'aplace\').value,mastery:$(\'aplace\').value,score:null,notes:$(\'anote\').value,assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
-          new = "await insert('assessments',{student_id:$(\'ast\').value,kind:$(\'asub\').value,title:'رائز الموضعة',mastery:$(\'aplace\').value,score:null,criteria:{placement_threshold:$(\'aplace\').value,notes:$(\'anote\').value||''},assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
+          new = "await insert('assessments',{student_id:$(\'ast\').value,kind:'placement',title:'رائز الموضعة',mastery:$(\'aplace\').value,score:null,criteria:{subject:$(\'asub\').value,placement_threshold:$(\'aplace\').value,notes:$(\'anote\').value||''},assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
 
           if old not in s:
-              # Fallback: replace the complete insert expression inside saveAssessment.
               pattern = r"await insert\('assessments',\{.*?created_by:user\.id\}\);"
               s2, n = re.subn(pattern, new, s, count=1)
               if n != 1:
@@ -46,5 +45,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add v17.html
           git diff --cached --quiet && exit 0
-          git commit -m 'fix: align assessment insert with database schema'
+          git commit -m 'fix: use valid placement assessment kind'
           git push

@@ -24,17 +24,23 @@ jobs:
           p = Path('v17.html')
           s = p.read_text(encoding='utf-8')
 
-          old = "await insert('assessments',{student_id:$(\'ast\').value,subject:$(\'asub\').value,assessment_type:'موضعة',placement_threshold:$(\'aplace\').value,mastery:$(\'aplace\').value,score:null,notes:$(\'anote\').value,assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
-          new = "await insert('assessments',{student_id:$(\'ast\').value,kind:'placement',title:'رائز الموضعة',mastery:$(\'aplace\').value,score:null,criteria:{subject:$(\'asub\').value,placement_threshold:$(\'aplace\').value,notes:$(\'anote\').value||''},assessed_at:$(\'adate\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
+          old = "await insert('assessments',{student_id:$(\\'ast\\').value,subject:$(\\'asub\\').value,assessment_type:'موضعة',placement_threshold:$(\\'aplace\\').value,mastery:$(\\'aplace\\').value,score:null,notes:$(\\'anote\\').value,assessed_at:$(\\'adate\\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
+          new = "await insert('assessments',{student_id:$(\\'ast\\').value,kind:'diagnostic',title:'رائز الموضعة',mastery:$(\\'aplace\\').value,score:null,criteria:{subject:$(\\'asub\\').value,placement_threshold:$(\\'aplace\\').value,notes:$(\\'anote\\').value||''},assessed_at:$(\\'adate\\').value||new Date().toISOString().slice(0,10),created_by:user.id});"
 
           if old not in s:
-              pattern = r"await insert\('assessments',\{.*?created_by:user\.id\}\);"
+              pattern = r"await insert\\('assessments',\\{.*?created_by:user\\.id\\}\\);"
               s2, n = re.subn(pattern, new, s, count=1)
               if n != 1:
                   raise SystemExit('assessment insert expression not found; aborting')
               s = s2
           else:
               s = s.replace(old, new, 1)
+
+          # Also repair a previously patched payload that used the invalid kind "placement".
+          s = s.replace(
+              "await insert('assessments',{student_id:$(\\'ast\\').value,kind:'placement',title:'رائز الموضعة',mastery:$(\\'aplace\\').value,score:null,criteria:{subject:$(\\'asub\\').value,placement_threshold:$(\\'aplace\\').value,notes:$(\\'anote\\').value||''},assessed_at:$(\\'adate\\').value||new Date().toISOString().slice(0,10),created_by:user.id});",
+              new
+          )
 
           p.write_text(s, encoding='utf-8')
           PY
